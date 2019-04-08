@@ -1,0 +1,108 @@
+digraph GameComponentDiagram {
+  label="Diagrama de juego";
+  fontname="Helvetica";
+  fontsize="8";
+  node [fontname="Helvetica",fontsize="8",shape=none];
+  edge [arrowhead="vee",style="dashed",color="#003388",fontname="Helvetica",fontsize="8"];
+
+  rankdir=LR;
+
+
+  subgraph userLayer {
+    label = ""
+    color="none";
+    user [label="User",image="img/icons8-user-male.svg"];
+  }
+
+  subgraph cluster0 {
+    style=filled;
+    color="#2b6f6f";
+    fillcolor="#fc93cb";
+    label = "Estructures";
+    entity [id="Entity",label="Main\nentity",image="img/icons8-user-male.svg"];
+    audio [label="Audio", image="img/icons8-user-male.svg"];
+    mainLoop [label="Main Loop", image="img/icons8-user-male.svg"];
+    gameUntil [label="Game until", image="img/icons8-user-male.svg"];
+
+  }
+
+
+
+  subgraph cluster1 {
+
+    style=filled;
+    color="#2b6f6f";
+    fillcolor="#eeeeee";
+    label = "Implement";
+
+
+    subgraph cluster3 {
+        style=filled;
+        color="#2b6f6f";
+        fillcolor="#fc93cb";
+        label = "";
+        mainLoopImplement [label="-Main loop implement\l-fps\l-event system\l-pause\l-escene system\l-input system\l",
+            image="img/icons8-user-male.svg"];
+    }
+
+
+    subgraph cluster4 {
+        style=filled;
+        color="#2b6f6f";
+        fillcolor="#fc93cb";
+        label = "";
+        userEntity [label="user-navi", image="img/icons8-user-male.svg"];
+        asteroidEntity [label="Asteroisd<>", image="img/icons8-user-male.svg"]
+        bulletEntity [label="bulletEntity", image="img/icons8-user-male.svg"];
+    }
+
+
+//game until
+    subgraph cluster5 {
+        style=filled;
+        color="#2b6f6f";
+        fillcolor="#fc93cb";
+        label = "";
+        pointSistem [label="-PointSystem\l-Collition\l-Game Over\l", image="img/icons8-user-male.svg"]
+    }
+
+    subgraph cluster6 {
+        style=filled;
+        color="#2b6f6f";
+        fillcolor="#fc93cb";
+        label = "";
+        audioCluster [label="-shots sounds\l-sount new leven\l-bullet impact\l-presentation Sound", image="img/icons8-user-male.svg"]
+    }
+
+  }
+
+  // Connections
+  user->entity;
+  user->audio;
+  user->mainLoop;
+  user->gameUntil;
+  mainLoop->mainLoopImplement
+  mainLoop->userEntity
+  mainLoop->pointSistem
+  mainLoop->audioCluster
+
+}
+
+/*ecenas,
+figuras y girar abstract,
+disparos,
+destrucciond e meteoro,
+velocidad,
+ramdo el poligono de enmigos,
+estrellas opcional,
+sonidos de naves choques
+traspaso de la pantalla de un lado a otro,
+contenedor de enemigos es decir astwroides(4 tipos)
+generador de mensajes,
+puntos
+max puntos
+velocidad
+
+
+entidad-> asteroid -> player -> balas
+*/
